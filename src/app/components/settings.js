@@ -23,6 +23,7 @@ function (_, crypto) {
       panel_names                   : [],
       default_route                 : '/dashboard/file/default.json',
       grafana_index                 : 'grafana-dash',
+      delay_now                     : 'now',
       elasticsearch_all_disabled    : false,
       timezoneOffset                : null,
       unsaved_changes_warning       : true
