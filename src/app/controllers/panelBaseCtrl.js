@@ -53,7 +53,12 @@ function (angular, _, $) {
         text: 'Remove',
         click: 'remove_panel_from_row(row, panel)',
         condition: true
-      }
+      },
+      {
+        text: 'Save Link',
+        click: "saveLink()",
+        condition: true
+      },
     ];
 
     $scope.inspector = {};
@@ -125,6 +130,20 @@ function (angular, _, $) {
       $scope.enterFullscreenMode({ edit: false });
     };
 
+    $scope.saveLink= function() {
+      var graphiteQuery = {
+        range: $scope.rangeUnparsed,
+        interval: $scope.interval,
+        targets: $scope.panel.targets,
+        format: 'png',
+        maxDataPoints: $scope.resolution,
+        datasource: $scope.panel.datasource,
+        showLink: true
+      };
+
+      $scope.datasource.query(graphiteQuery);
+      return;
+    };
   }
 
   PanelBaseCtrl['$inject'] = ['$scope', '$rootScope', '$timeout'];

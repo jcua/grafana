@@ -34,6 +34,15 @@ function (angular, _, $, config, kbn, moment) {
 
         var params = this.buildGraphiteParams(graphOptions);
 
+        if (options.showLink === true) {
+          params.push('width=1036');
+          params.push('height=580');
+          console.log(params);
+          var url = this.url + '/render' + '?' + params.join('&');
+          window.prompt("Copy to clipboard: Command+C, Enter", url);
+          return;
+        }
+
         if (options.format === 'png') {
           return $q.when(this.url + '/render' + '?' + params.join('&'));
         }
